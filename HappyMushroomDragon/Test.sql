@@ -1,2 +1,2 @@
 
-SELECT TOP 10 * FROM DB_Meteo.dbo.Rilevamenti;
+SELECT TOP 10 * FROM Db_HMD.dbo.Recensione;
