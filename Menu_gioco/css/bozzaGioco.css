@@ -1,0 +1,176 @@
+/* #region font */
+@font-face {
+    font-family: 'Endor';
+    font-style: normal;
+    font-weight: bolder;
+    src: url('../css/font/endor-cdnfonts/ENDOR___.ttf');
+}
+
+@font-face {
+    font-family: 'EndorAlt';
+    font-style: normal;
+    font-weight: bolder;
+    src: url('../css/font/endor-cdnfonts/ENDORALT.ttf');
+}
+
+@font-face {
+    font-family: 'Bricklay';
+    font-weight: 200;
+    font-style: bold;
+    src: url('../css/font/bricklay/BricklayDemoRegular.ttf');
+}
+
+@font-face {
+    font-family: 'Blueberry';
+    font-weight: 200;
+    font-style: bold;
+    src: url('../css/font/blueberry/Blueberry.ttf');
+}
+
+@font-face {
+    font-family: 'Sun'; 
+    src: url('../css/font/sun/A\ little\ sunshine.ttf');
+}
+
+/* #endregion */
+
+/* #region major object */
+
+.container {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+body {
+/* 
+    background: rgb(123,193,171);
+    background: linear-gradient(0deg, rgba(123,193,171,1) 0%, rgba(211,192,147,1) 100%);
+     */
+
+     background: rgb(201,119,127);
+background: linear-gradient(90deg, rgba(201,119,127,1) 0%, rgba(211,192,147,1) 30%);
+}
+
+/* #region head */
+
+#Title {
+    font-size: 6vh;
+    text-align: center;
+}
+
+#SubTitle {
+    font-size: 7vh;
+    text-align:center;
+}
+
+#headDiv {
+    text-align: left;
+    width: 30vw;
+    font-family: 'Endor';
+    
+}
+
+/* #endregion */
+
+/* #region immagini */
+
+.imgDragonAdult {
+    background-image: url("../css/img/dragonAdultsmall.png");
+    background-position: center;
+    background-size: cover;
+    
+}
+
+/* #endregion */
+
+/* #region bottone */
+
+.listButtonDiv {
+    font-family: 'Endor';
+    text-align: center;
+}
+
+button {
+    font-family: 'Endor';
+    border-color: transparent;
+    font-size: 4vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+#bottoneComandi:hover, #bottoneGioca:hover, #bottoneLogin:hover, #bottoneStoria:hover{
+    color: #174a1f;
+    font-size: 5vh;
+    font-style:italic ;
+}
+
+
+#bottoneComandi, #bottoneGioca, #bottoneLogin, #bottoneStoria {
+    background-image: url("../css/img/bottoneTry2.png");
+    background-size: cover;
+    background-position: right;
+    width: 30vw;
+    height: 27vh;
+}
+
+
+/* #endregion */
+
+/* #endregion */
+
+/* .listItemButton{
+    background: url("../css/img/button.jpg") cover no-repeat;
+} */
+
+/* #region navbar  */
+
+.topnav {
+    background:  linear-gradient(90deg, rgba(214,59,76,1) 0%, rgba(235,142,102,1) 30%, rgba(123,193,171,1) 100%);;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    font-family: 'Bricklay';
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px; 
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.topnav a.active {
+    background-color: rgb(218, 43, 63);
+    color: white;
+}
+
+.topnav a.active:hover {
+    background-color: #be2e1b;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* #endregion */
+
+.listContact, .listMail{
+    background-color: rgb(153, 87, 94) ;
+    list-style: none;
+    text-align:center;
+    font-family: 'Sun';
+    color:black;
+}
+
+.listContact{
+    font-size: 200%;
+    font-weight:800;
+}
