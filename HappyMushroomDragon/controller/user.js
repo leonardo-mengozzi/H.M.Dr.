@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const sql = require('mssql');
 const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -43,7 +44,16 @@ router.post('/write', (req, res) => {
 });
 
 router.post('/read', (req, res) => {
-    res.send('laskdjflsjk');
+    async () => {
+        try {
+            await sql.connect('Server=localhost;Database=Db_HMD;User Id=sa;Password=burbero2023;Encrypt=true');
+            res.send("ciao");
+            const result = await sql.query`select * Recensione;`;
+            res.send(result);
+        } catch (err) {
+            res.send("NON CI SIAMO!!!");
+        }
+    }
 });
 
 router.post('/getUser', (req, res) => {
