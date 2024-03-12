@@ -2,8 +2,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const sql = require('mssql');
+const sql = require('mssql/msnodesqlv8');
 const router = express.Router();
+
+// var confing = {
+//     server : "LAPTOP-K7QM0HU5\SQLEXPRESS",
+//     database : "Db_HMD",
+//     driver : "msnodesqlv8",
+//     user : "MengoProve",
+//     password : "1234",
+//     options : {
+//         trustedConnection : true
+//     }
+// }
+
+var confing = {
+    Server : "LAPTOP-K7QM0HU5\SQLEXPRESS",
+    Database : "Db_HMD",
+    UserId : "MengoProve",
+    Password : "1234",
+    Crittografa: true
+}
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -44,15 +63,26 @@ router.post('/write', (req, res) => {
 });
 
 router.post('/read', (req, res) => {
-    async () => {
-        try {
-            await sql.connect('Server=localhost;Database=Db_HMD;User Id=sa;Password=burbero2023;Encrypt=true');
-            res.send("ciao");
-            const result = await sql.query`select * Recensione;`;
-            res.send(result);
-        } catch (err) {
-            res.send("NON CI SIAMO!!!");
-        }
+    // async () => {
+    //     sql.connect(confing, (err) => {
+    //         if (err) res.send("errore1");
+    
+    //         var request = new sql.Request();
+    //         request.query("select * Recensione;", (err, records) => {
+    //             if (err) res.send("errore2");
+    //             res.send(records);
+    
+    //         });
+    //     });
+    // }
+
+    try {
+        // make sure that any items are correctly URL encoded in the connection string
+        sql.connect(confing)
+        const result = sql.query`select * Recensione;`
+        console.dir(result)
+    } catch (err) {
+        res.send(err);
     }
 });
 
