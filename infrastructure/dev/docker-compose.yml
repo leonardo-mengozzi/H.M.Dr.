@@ -1,0 +1,41 @@
+
+networks:
+  backend:
+  sql_server:
+
+services:
+  gateway:
+    build:
+      dockerfile: infrastructure/dev/dockerfiles/std.node.Dockerfile
+      context: ../..
+      args:
+        SERVICE_PATH: ./gateway
+    volumes:
+      - ../../gateway:/usr/src/server
+    ports:
+      - '3000:3000'
+    networks:
+      - backend
+
+  backend:
+    build:
+      dockerfile: infrastructure/dev/dockerfiles/std.node.Dockerfile
+      context: ../..
+      args:
+        SERVICE_PATH: ./backend/posts
+    volumes:
+      - ../../backend/posts:/usr/src/server
+    networks:
+      - backend
+      - sql_server
+
+  sql_server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql_server_container
+    restart: always
+    env_file:
+      - dev.env
+    ports:
+      - "1433:1433"
+    networks:
+      - sql_server

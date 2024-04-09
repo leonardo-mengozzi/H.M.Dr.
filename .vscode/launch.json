@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "name": "HappyMushroomDragon",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}\\backend\\HappyMushroomDragon",
+            "skipFiles": [
+                "${workspaceFolder}\\backend\\HappyMushroomDragon\\<node_internals>\\**",
+                "${workspaceFolder}\\backend\\HappyMushroomDragon\\node_modules\\**",
+                "**/$KNOWN_TOOLS$/**",
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node-terminal",
+            "name": "Gateway",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}\\gateway",
+            "skipFiles": [
+                "${workspaceFolder}\\gateway\\<node_internals>\\**",
+                "${workspaceFolder}\\gateway\\node_modules\\**",
+                "**/$KNOWN_TOOLS$/**",
+                "<node_internals>/**"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Server/Client",
+            "configurations": ["HappyMushroomDragon", "Gateway"]
+        }
+    ]
+}
