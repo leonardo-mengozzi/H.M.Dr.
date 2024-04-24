@@ -22,7 +22,7 @@ server.use(async (req, res, next) => {
 
     try{
         // verify the given token: if valid the return value will be the logged user
-        const authResult = await firebase.auth().verifyIdToken(req.headers.authorization)
+        const authResult = await firebase.auth().verifyIdToken(req.headers.authorization.replace("Bearer ", ""))
 
         // If all went correctly print something to celebrate the event and enrich the request with auth data
         console.log(`Hello there: ${authResult.email}`)
@@ -56,4 +56,5 @@ for (const host of hosts) {
     })
 }
 
-server.listen(3001, () => console.log('Gateway up and running.'))
+const PORT = 3001;
+server.listen(PORT, () => console.log('Gateway online on port: ' + PORT));

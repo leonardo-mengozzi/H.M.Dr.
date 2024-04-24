@@ -15,4 +15,5 @@ const postRouter = require('./router/v1/post')
 // Init posts router on Express
 server.use('/api/v1', postRouter)
 
-server.listen(3000, () => console.log("Ciao"))
+const PORT = 3001;
+server.listen(PORT, () => console.log("Service H.M.D. online at port: " + PORT));
