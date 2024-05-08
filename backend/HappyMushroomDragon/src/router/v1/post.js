@@ -4,7 +4,7 @@ const httpStatus = require('http-status')
 
 const validate = require('../../middleware/validator')
 const postValidator = require('../../validator/post')
-const postController = require('../../controller/post')
+const controller = require('../../controller/user')
 
 
 // Example of middleware
@@ -14,6 +14,8 @@ router.use((req, res, next) => {
 })
 
 // Get a paginated list of posts
-router.get('/posts', validate(postValidator.list), postController.list)
+router.get('/posts', validate(postValidator.list), controller.list)
+
+router.get("/read", validate(postValidator.list), controller.read)
 
 module.exports = router

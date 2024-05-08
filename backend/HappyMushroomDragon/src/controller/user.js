@@ -1,9 +1,6 @@
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const axios = require('axios');
-const sql = require('mssql');
-const router = express.Router();
+const httpStatus = require("http-status");
+const postRepository = require("..repository/post");
 
 var confing = {
     user: "sa",
@@ -22,6 +19,7 @@ var confing = {
     }
 }
 
+/*
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
@@ -77,9 +75,14 @@ router.post('/read', (req, res) => {
         res.status(200).json({data:result});
     });
 });
+*/
 
-router.post('/getUser', (req, res) => {
-    res.send('...')
-});
+const readName = (req, res) => {
+    const tablename = req.params.tablename
+    postRepository.AllTable(tablename)
+    .then((Nome) => {
+        res.status(httpStatus.OK).json({data: Nome})
+    })
+}
 
-module.exports = router; 
+module.exports = {readName}; 
