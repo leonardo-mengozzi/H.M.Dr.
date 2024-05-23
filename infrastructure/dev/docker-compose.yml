@@ -1,7 +1,4 @@
-
-networks:
-  backend:
-  sql_server:
+version: '1'
 
 services:
   gateway:
@@ -17,14 +14,14 @@ services:
     networks:
       - backend
 
-  backend:
+  HappyMushroomDragon:
     build:
       dockerfile: infrastructure/dev/dockerfiles/std.node.Dockerfile
       context: ../..
       args:
-        SERVICE_PATH: ./backend/posts
+        SERVICE_PATH: ./backend/HappyMushroomDragon
     volumes:
-      - ../../backend/posts:/usr/src/server
+      - ../../backend/HappyMushroomDragon:/usr/src/server
     networks:
       - backend
       - sql_server
@@ -37,5 +34,12 @@ services:
       - dev.env
     ports:
       - "1433:1433"
+    environment:
+      POSTGRES_USER: ???
+      POSTGRES_PASSWORD: ???
     networks:
       - sql_server
+
+networks:
+  HappyMushroomDragon:
+  sql_server:
