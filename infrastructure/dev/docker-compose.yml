@@ -3,43 +3,42 @@ version: '1'
 services:
   gateway:
     build:
-      dockerfile: infrastructure/dev/dockerfiles/std.node.Dockerfile
       context: ../..
+      dockerfile: infrastructure/dev/dockerfiles/std.node.Dockerfile
       args:
         SERVICE_PATH: ./gateway
     volumes:
-      - ../../gateway:/usr/src/server
+      - ./gateway:/usr/src/server
     ports:
       - '3000:3000'
     networks:
-      - backend
+      - happymushroomdragon
 
-  HappyMushroomDragon:
+  happymushroomdragon:
     build:
       dockerfile: infrastructure/dev/dockerfiles/std.node.Dockerfile
       context: ../..
       args:
         SERVICE_PATH: ./backend/HappyMushroomDragon
     volumes:
-      - ../../backend/HappyMushroomDragon:/usr/src/server
+      - ./backend/HappyMushroomDragon:/usr/src/server
     networks:
-      - backend
+      - happymushroomdragon
       - sql_server
 
   sql_server:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server
     container_name: sql_server_container
     restart: always
     env_file:
       - dev.env
     ports:
       - "1433:1433"
-    environment:
-      POSTGRES_USER: ???
-      POSTGRES_PASSWORD: ???
     networks:
       - sql_server
+    volumes:
+      - "./data:/var/opt/mssql/data"
 
 networks:
-  HappyMushroomDragon:
+  happymushroomdragon:
   sql_server:
